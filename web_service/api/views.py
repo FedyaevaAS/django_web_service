@@ -87,7 +87,10 @@ class TopClientsView(APIView):
             for client in top_clients
         ]
 
-        return Response({"response": top_clients_data}, status=status.HTTP_200_OK)
+        return Response(
+            {"response": top_clients_data},
+            status=status.HTTP_200_OK,
+        )
 
     def get_client_gems(self, client, gems_list):
         client_items = client.deals.values_list("item__name", flat=True).distinct()
